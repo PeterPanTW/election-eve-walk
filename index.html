@@ -1,0 +1,685 @@
+<title>凱道仁愛夜巡 · Election Eve Night Walk</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Noto+Serif+TC:wght@500;700&family=Noto+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#EAE6D9;
+    --surface:#F8F6EE;
+    --ink:#1B2030;
+    --ink-soft:#565C72;
+    --accent:#A3701E;
+    --accent-soft:#E7C488;
+    --accent-ink:#4A3410;
+    --line:#D7CFB8;
+    --hollow:#FFFFFF;
+    --shadow:0 1px 2px rgba(27,32,48,0.07), 0 6px 18px rgba(27,32,48,0.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141726;
+      --surface:#1F2436;
+      --ink:#ECE7D8;
+      --ink-soft:#9CA3BF;
+      --accent:#E8B55B;
+      --accent-soft:#4A3B22;
+      --accent-ink:#F6DDAA;
+      --line:#2C3148;
+      --hollow:#141726;
+      --shadow:0 1px 2px rgba(0,0,0,0.35), 0 10px 22px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#141726;
+    --surface:#1F2436;
+    --ink:#ECE7D8;
+    --ink-soft:#9CA3BF;
+    --accent:#E8B55B;
+    --accent-soft:#4A3B22;
+    --accent-ink:#F6DDAA;
+    --line:#2C3148;
+    --hollow:#141726;
+    --shadow:0 1px 2px rgba(0,0,0,0.35), 0 10px 22px rgba(0,0,0,0.4);
+  }
+
+  --font-d-en:'Big Shoulders Display',sans-serif;
+  --font-d-zh:'Noto Serif TC',serif;
+  --font-b-en:'Noto Sans',system-ui,sans-serif;
+  --font-b-zh:'Noto Sans TC',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'SF Mono',monospace;
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-b-en);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .t-zh{font-family:var(--font-b-zh);}
+  .t-en{font-family:var(--font-b-en);}
+  body[data-lang="zh"] .t-en{display:none;}
+  body[data-lang="en"] .t-zh{display:none;}
+
+  a{color:inherit;}
+  button{font:inherit;color:inherit;}
+
+  .wrap{max-width:640px;margin:0 auto;padding:0 18px;}
+
+  /* ---------- sticky top ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:30;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:640px;margin:0 auto;padding:12px 18px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .brand{
+    display:flex;align-items:baseline;gap:8px;
+    font-weight:700;letter-spacing:.01em;
+  }
+  .brand .t-zh{font-family:var(--font-d-zh);font-size:1.05rem;}
+  .brand .t-en{font-family:var(--font-d-en);font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;}
+  .lang-toggle{
+    display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;
+    font-family:var(--font-mono);font-size:.72rem;letter-spacing:.03em;
+  }
+  .lang-toggle button{
+    border:0;background:transparent;padding:6px 12px;cursor:pointer;color:var(--ink-soft);
+  }
+  .lang-toggle button[aria-pressed="true"]{background:var(--accent);color:var(--bg);font-weight:600;}
+  .lang-toggle button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
+
+  .meetbar{
+    position:sticky;top:48px;z-index:20;
+    background:var(--surface);
+    border-bottom:1px dashed var(--line);
+  }
+  .meetbar-inner{
+    max-width:640px;margin:0 auto;padding:9px 18px;
+    display:flex;align-items:center;gap:10px;
+    font-size:.82rem;color:var(--ink-soft);
+  }
+  .meetbar strong{color:var(--ink);font-weight:600;}
+  .meetbar .dot{color:var(--accent);}
+
+  /* ---------- big question ---------- */
+  .question-banner{
+    margin:22px 0 30px;
+    padding:22px 20px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:4px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .question-banner::before{
+    content:"";
+    position:absolute;inset:8px;
+    border:1px dashed var(--accent-soft);
+    border-radius:2px;
+    pointer-events:none;
+  }
+  .q-label{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:10px;
+  }
+  .q-text{
+    margin:0;
+    font-size:1.2rem;
+    text-wrap:balance;
+  }
+  .q-text .t-zh{font-family:var(--font-d-zh);font-weight:700;line-height:1.5;}
+  .q-text .t-en{font-family:var(--font-d-en);font-weight:700;font-size:1.3rem;line-height:1.3;letter-spacing:.005em;}
+
+  /* ---------- timeline ---------- */
+  .timeline{list-style:none;margin:0 0 36px;padding:0;position:relative;}
+  .stop{
+    position:relative;
+    display:grid;
+    grid-template-columns:28px 1fr;
+    gap:0 14px;
+    padding-bottom:28px;
+  }
+  .stop:last-child{padding-bottom:0;}
+  .rail{position:relative;display:flex;flex-direction:column;align-items:center;}
+  .rail::before{
+    content:"";position:absolute;top:26px;bottom:-28px;left:50%;width:2px;
+    background:var(--line);transform:translateX(-50%);
+  }
+  .stop:last-child .rail::before{display:none;}
+  .dot{
+    width:26px;height:26px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);font-size:.68rem;font-weight:600;
+    border:2px solid var(--accent);
+    background:var(--hollow);color:var(--accent);
+    z-index:1;
+  }
+  .dot--filled{background:var(--accent);color:var(--bg);}
+  .stop.is-now .dot{box-shadow:0 0 0 4px var(--accent-soft);}
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px 16px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .time{
+    font-family:var(--font-mono);font-weight:600;font-size:.78rem;
+    color:var(--accent);letter-spacing:.02em;
+    font-variant-numeric:tabular-nums;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .badge{
+    font-family:var(--font-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;
+    background:var(--accent);color:var(--bg);padding:2px 7px;border-radius:999px;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .stop.is-now .badge{animation:pulse 2.2s ease-in-out infinite;}
+  }
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.55;}}
+
+  .title{margin:6px 0 4px;font-size:1.05rem;}
+  .title .t-zh{font-family:var(--font-d-zh);font-weight:700;}
+  .title .t-en{font-family:var(--font-d-en);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:1.1rem;}
+
+  .oneliner{margin:0 0 10px;color:var(--ink-soft);font-size:.92rem;}
+
+  .question{
+    margin:10px 0;
+    padding:10px 12px;
+    background:var(--accent-soft);
+    border-top:1px dashed var(--accent);
+    border-radius:0 0 6px 6px;
+    font-size:.92rem;
+    color:var(--accent-ink);
+  }
+  .question .t-zh, .question .t-en{font-weight:500;}
+  .question .source{display:block;margin-top:6px;font-family:var(--font-mono);font-size:.68rem;font-weight:500;color:var(--accent-ink);opacity:.75;}
+
+  .story-photo{margin:10px 0;}
+  .photo-frame{
+    aspect-ratio:16/10;
+    border:1.5px dashed var(--line);
+    border-radius:8px;
+    background:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--line);font-size:1.8rem;
+    overflow:hidden;
+  }
+  .photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo-caption{margin-top:8px;}
+  .photo-caption .t-zh{font-family:var(--font-d-zh);font-weight:700;font-size:1.05rem;color:var(--ink);display:block;}
+  .photo-caption .t-en{font-family:var(--font-d-en);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:1.05rem;color:var(--ink);display:block;}
+  .photo-credit{margin:3px 0 0;font-size:.7rem;color:var(--ink-soft);font-family:var(--font-mono);}
+  .photo-credit a{color:inherit;text-decoration:underline;}
+
+  details{margin-top:8px;}
+  summary{
+    cursor:pointer;
+    list-style:none;
+    font-family:var(--font-mono);
+    font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--ink-soft);
+    display:inline-flex;align-items:center;gap:6px;
+    padding:4px 0;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::before{content:"▸";display:inline-block;transition:transform .15s ease;color:var(--accent);}
+  details[open] summary::before{transform:rotate(90deg);}
+  summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  .detail-body{padding-top:8px;font-size:.9rem;color:var(--ink-soft);}
+  .detail-body p{margin:0 0 10px;}
+
+  .maplinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .maplink{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:.8rem;font-weight:600;
+    padding:7px 12px;border-radius:999px;
+    background:var(--bg);border:1px solid var(--line);
+    text-decoration:none;color:var(--ink);
+  }
+  .maplink:hover{border-color:var(--accent);color:var(--accent);}
+  .maplink:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  .deep-think summary{color:var(--accent);}
+  .deep-think summary::before{content:"🧠";}
+  .deep-q{margin:10px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);}
+  .deep-q + .deep-q{margin-top:8px;}
+  .deep-q .t-zh,.deep-q .t-en{font-size:.88rem;}
+  .deep-q .source{display:block;margin-top:5px;font-family:var(--font-mono);font-size:.68rem;color:var(--ink-soft);}
+
+  /* ---------- street campaign scenes ---------- */
+  .street-section{margin:36px 0;}
+  .street-section h2 .t-zh{font-family:var(--font-d-zh);font-weight:700;font-size:1.1rem;}
+  .street-section h2 .t-en{font-family:var(--font-d-en);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:1.15rem;}
+  .street-section h2{margin:0 0 4px;}
+  .street-note{margin:0 0 14px;color:var(--ink-soft);font-size:.85rem;}
+  .street-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:480px){.street-grid{grid-template-columns:1fr;}}
+  .street-item .photo-frame{aspect-ratio:3/4;}
+  .street-item .photo-caption{margin-top:6px;}
+  .street-item .photo-caption .t-zh,.street-item .photo-caption .t-en{font-size:.95rem;}
+
+  /* ---------- photos ---------- */
+  .photos{margin:36px 0 30px;}
+  .photos h2{margin:0 0 4px;}
+  .photos h2 .t-zh{font-family:var(--font-d-zh);font-weight:700;font-size:1.1rem;}
+  .photos h2 .t-en{font-family:var(--font-d-en);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:1.15rem;}
+  .photos p{margin:0 0 14px;color:var(--ink-soft);font-size:.9rem;}
+  .photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .photo-slot{
+    aspect-ratio:4/3;
+    border:1.5px dashed var(--line);
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--line);font-size:1.6rem;
+    background:var(--surface);
+  }
+
+  footer{
+    text-align:center;padding:24px 18px 36px;
+    font-size:.76rem;color:var(--ink-soft);
+    font-family:var(--font-mono);letter-spacing:.02em;
+  }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="t-zh">凱道仁愛夜巡</span>
+      <span class="t-en">Election Eve Night Walk</span>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language / 語言">
+      <button type="button" data-lang-btn="zh" aria-pressed="true">中文</button>
+      <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</div>
+
+<div class="meetbar">
+  <div class="meetbar-inner">
+    <span class="dot">●</span>
+    <span>
+      <span class="t-zh"><strong>集合 18:30</strong> · 捷運台大醫院站2號出口 · 避免穿純藍／純綠整套</span>
+      <span class="t-en"><strong>Meet 6:30 PM</strong> · NTU Hospital Stn Exit 2 · Skip all-blue or all-green outfits</span>
+    </span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="question-banner">
+    <span class="q-label">
+      <span class="t-zh">今夜的大哉問</span>
+      <span class="t-en">Tonight's Big Question</span>
+    </span>
+    <p class="q-text">
+      <span class="t-zh">在充滿分歧與外部壓力的社會裡，是什麼讓「輸的人」願意心甘情願承認失敗、和平交出權力？</span>
+      <span class="t-en">In a deeply divided society under intense outside pressure, what makes the losing side willing to accept defeat and hand over power peacefully?</span>
+    </p>
+  </section>
+
+  <ol class="timeline">
+
+    <li class="stop" data-start="1095" data-end="1125">
+      <div class="rail"><span class="dot">1</span></div>
+      <div class="card">
+        <span class="time">
+          <span class="t-zh">18:30</span><span class="t-en">6:30 PM</span>
+        </span>
+        <h3 class="title">
+          <span class="t-zh">集合出發</span><span class="t-en">Meet-up</span>
+        </h3>
+        <p class="oneliner">
+          <span class="t-zh">捷運台大醫院站2號出口，確認服裝與夥伴</span>
+          <span class="t-en">NTU Hospital Stn, Exit 2 — check in with your group</span>
+        </p>
+        <details>
+          <summary><span class="t-zh">更多資訊</span><span class="t-en">More info</span></summary>
+          <div class="detail-body">
+            <p>
+              <span class="t-zh">2號出口在台大醫院舊館大門旁，備有電梯與手扶梯。請避免穿著純藍或純綠整套服裝。</span>
+              <span class="t-en">Exit 2 sits right by the old NTU Hospital main gate, with an elevator and escalators. Please skip an all-blue or all-green outfit.</span>
+            </p>
+            <div class="maplinks">
+              <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E6%AD%A3%E5%8D%80%E5%B8%B8%E5%BE%B7%E8%A1%971%E8%99%9F">
+                <span class="t-zh">📍 開啟地圖</span><span class="t-en">📍 Open in Maps</span>
+              </a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </li>
+
+    <li class="stop" data-start="1140" data-end="1210">
+      <div class="rail"><span class="dot dot--filled">2</span></div>
+      <div class="card">
+        <span class="time">
+          <span class="t-zh">19:00–20:10</span><span class="t-en">7:00–8:10 PM</span>
+          <span class="badge now-badge" hidden><span class="t-zh">現在</span><span class="t-en">NOW</span></span>
+        </span>
+        <h3 class="title">
+          <span class="t-zh">凱達格蘭大道</span><span class="t-en">Ketagalan Boulevard</span>
+        </h3>
+        <p class="oneliner">
+          <span class="t-zh">第一場陣營的勝選之夜，我們停留在公園路口外圍安全區</span>
+          <span class="t-en">The first campaign's election-night rally — we'll stay at the Park Rd. end, outside the inner crowd</span>
+        </p>
+        <div class="story-photo">
+          <div class="photo-frame"><img src="ketagalan-blvd.jpg" alt="Aerial view of Ketagalan Boulevard looking toward the Presidential Office Building"></div>
+          <p class="photo-caption">
+            <span class="t-zh">介壽路到凱達格蘭大道</span>
+            <span class="t-en">From Jieshou Road to Ketagalan Boulevard</span>
+          </p>
+          <p class="photo-credit">Photo: othree / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a></p>
+        </div>
+        <div class="question">
+          <span class="t-zh">💭 想一想：當選舉像搖滾演唱會一樣熱血沸騰，這股熱情是讓民主更有生命力，還是蓋過了理性辯論？</span>
+          <span class="t-en">💭 Think about it: when an election feels like a rock concert, does that passion make democracy more alive — or drown out reasoned debate?</span>
+        </div>
+        <details class="deep-think">
+          <summary><span class="t-zh">延伸思考</span><span class="t-en">Go deeper</span></summary>
+          <div class="deep-q">
+            <span class="t-zh">流著對的血，就該讓你統治所有人嗎？中國幾千年的「家天下」把天下當私產傳給兒子；但傳說中的堯反而跳過親生兒子，把天下禪讓給毫無血緣的舜。這條大道正對著的總統府，就是從「家天下」走向「一人一票」最具體的現場。</span>
+            <span class="t-en">Does the right bloodline earn you the right to rule everyone? For millennia, China's dynasties passed power to sons by blood — yet the legendary sage-king Yao famously skipped his own son and ceded the throne to Shun, an unrelated commoner proven virtuous. The Presidential Office this boulevard faces is the physical site of that shift from "rule by blood" to "one person, one vote."</span>
+            <span class="source">堯舜禪讓／孟子 · Locke vs. Divine Right of Kings</span>
+          </div>
+        </details>
+        <details>
+          <summary><span class="t-zh">更多資訊</span><span class="t-en">More info</span></summary>
+          <div class="detail-body">
+            <p>
+              <span class="t-zh">這條400公尺的大道，戒嚴時期名叫「介壽路」，連騎腳踏車都要下車牽行，1996年才改成今天的名字。今晚換成萬人揮旗的「大進場」。</span>
+              <span class="t-en">This 400-meter boulevard was once "Jieshou Road" under martial law — even cyclists had to dismount and walk it. It got its current name in 1996. Tonight it fills with flag-waving crowds for the candidate's grand entrance.</span>
+            </p>
+            <div class="maplinks">
+              <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E6%AD%A3%E5%8D%80%E5%85%AC%E5%9C%92%E8%B7%AF3%E8%99%9F">
+                <span class="t-zh">📍 開啟地圖</span><span class="t-en">📍 Open in Maps</span>
+              </a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </li>
+
+    <li class="stop" data-start="1210" data-end="1245">
+      <div class="rail"><span class="dot">3</span></div>
+      <div class="card">
+        <span class="time">
+          <span class="t-zh">20:10–20:45</span><span class="t-en">8:10–8:45 PM</span>
+          <span class="badge now-badge" hidden><span class="t-zh">現在</span><span class="t-en">NOW</span></span>
+        </span>
+        <h3 class="title">
+          <span class="t-zh">轉場</span><span class="t-en">On the Move</span>
+        </h3>
+        <p class="oneliner">
+          <span class="t-zh">步行8分鐘到台北車站，搭板南線到國父紀念館站</span>
+          <span class="t-en">An 8-min walk to Taipei Main Station, then the Bannan Line to NSYS Memorial Hall Stn</span>
+        </p>
+        <div class="question">
+          <span class="t-zh">💭 想一想：台灣沒有通訊投票，你得親自回到戶籍地投票。這究竟是一道門檻，還是一種儀式感？</span>
+          <span class="t-en">💭 Think about it: Taiwan has no mail-in voting — you must travel home in person to vote. Is that a barrier, or a ritual?</span>
+        </div>
+        <details class="deep-think">
+          <summary><span class="t-zh">延伸思考</span><span class="t-en">Go deeper</span></summary>
+          <div class="deep-q">
+            <span class="t-zh">眼前這些年輕人，正是要跟今晚的選舉結果共存最久的人——但「世代正義」的難題是：國債、氣候政策、長期建設的後果由下一代承擔最久，可選舉只讓「現在剛好到投票年齡」的人決定，還沒出生、或太年輕的人完全沒有投票權。</span>
+            <span class="t-en">The young people around you are exactly the ones who'll live longest with tonight's outcome — yet "intergenerational justice" asks: today's debt, climate policy, and long-term decisions are inherited by the next generation, but elections only give a say to those who happen to be old enough right now.</span>
+            <span class="source">世代正義 · Intergenerational Justice</span>
+          </div>
+        </details>
+        <details>
+          <summary><span class="t-zh">更多資訊</span><span class="t-en">More info</span></summary>
+          <div class="detail-body">
+            <p>
+              <span class="t-zh">留意車廂裡提著行李、專程返鄉投票的年輕人——投票率常年維持在七成上下，靠的正是這份「非回去不可」的堅持。</span>
+              <span class="t-en">Watch for young passengers with luggage, traveling home just to vote — turnout has long held around 70%, powered by exactly this kind of commitment.</span>
+            </p>
+            <div class="maplinks">
+              <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E6%AD%A3%E5%8D%80%E5%85%AC%E5%9C%92%E8%B7%AF13%E8%99%9F">
+                <span class="t-zh">📍 台北車站M8出口</span><span class="t-en">📍 Taipei Main Stn Exit M8</span>
+              </a>
+              <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E4%BF%A1%E7%BE%A9%E5%8D%80%E5%BF%A0%E5%AD%9D%E6%9D%B1%E8%B7%AF%E5%9B%9B%E6%AE%B5400%E8%99%9F">
+                <span class="t-zh">📍 國父紀念館站3號出口</span><span class="t-en">📍 Memorial Hall Stn Exit 3</span>
+              </a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </li>
+
+    <li class="stop" data-start="1245" data-end="1320">
+      <div class="rail"><span class="dot dot--filled">4</span></div>
+      <div class="card">
+        <span class="time">
+          <span class="t-zh">20:45–22:00</span><span class="t-en">8:45–10:00 PM</span>
+          <span class="badge now-badge" hidden><span class="t-zh">現在</span><span class="t-en">NOW</span></span>
+        </span>
+        <h3 class="title">
+          <span class="t-zh">國父紀念館</span><span class="t-en">Sun Yat-sen Memorial Hall</span>
+        </h3>
+        <p class="oneliner">
+          <span class="t-zh">第二場陣營的市民之夜，直擊大進場高潮與準時散場</span>
+          <span class="t-en">The second campaign's rally — the grand entrance, then a dead-on-time wrap</span>
+        </p>
+        <div class="story-photo">
+          <div class="photo-frame"><img src="rally-night.jpg" alt="A nighttime campaign rally crowd waving flags under stage lights"></div>
+          <p class="photo-caption">
+            <span class="t-zh">灰姑娘的十點鐘</span>
+            <span class="t-en">The Cinderella Hour</span>
+          </p>
+          <p class="photo-credit">Photo: 許寧 / VOA, Wikimedia Commons, Public Domain</p>
+        </div>
+        <div class="question">
+          <span class="t-zh">💭 想一想：當雙方都把這場選舉當作生死之戰，是什麼讓晚上10點的煞車踩得這麼準？</span>
+          <span class="t-en">💭 Think about it: when both sides treat this election as existential, what makes everyone brake exactly at 10 PM?</span>
+        </div>
+        <details class="deep-think">
+          <summary><span class="t-zh">延伸思考</span><span class="t-en">Go deeper</span></summary>
+          <div class="deep-q">
+            <span class="t-zh">今晚的演講裡，兩邊都會搬出數字證明自己做得好——施政滿意度、經濟成長率。但「古德哈特定律」提醒我們：一旦數字變成目標，它就不再是個好指標（越戰時美軍靠「敵軍死亡人數」衡量戰果，結果下級軍官一路謊報）。選民到底是在評斷真實治理，還是在評斷一套被設計過的數字？</span>
+            <span class="t-en">Tonight's speeches will both cite numbers as proof of good governance — approval ratings, growth rates. But Goodhart's Law warns: once a measure becomes a target, it stops being a good measure (the Vietnam War's "body count" metric famously got gamed up the chain of command). Are voters judging real governance, or a curated set of numbers?</span>
+            <span class="source">Goodhart's Law · McNamara Fallacy</span>
+          </div>
+          <div class="deep-q">
+            <span class="t-zh">明天開票所監票的是一般路人，不是政治學專家。如果大部分選民根本不懂經濟、外交政策，他們的一票憑什麼跟每天研究這些議題的專家一樣重？但反過來：靠不懂政策的普通人盯著票匭，而不是靠「專家說了算」，會不會才是這套制度真正可靠的原因？</span>
+            <span class="t-en">Tomorrow's vote count is watched by ordinary passersby, not political scientists. If most voters barely understand economics or diplomacy, why should their vote count as much as an expert's? Or is it precisely because ordinary people — not "the experts" — are the ones watching the ballot box that makes the system trustworthy?</span>
+            <span class="source">Jason Brennan, <em>Against Democracy</em></span>
+          </div>
+        </details>
+        <details>
+          <summary><span class="t-zh">更多資訊</span><span class="t-en">More info</span></summary>
+          <div class="detail-body">
+            <p>
+              <span class="t-zh">9點55分還像搖滾演唱會般沸騰，10點整麥克風準時關閉——這是《選罷法》規定的冷靜期。明天開票所，你會看到答案的另一半：人工大聲唱票。</span>
+              <span class="t-en">At 9:55 it's as loud as a rock concert; at 10:00 sharp, the mics cut — a legally mandated cooling-off period. Tomorrow at the vote count, you'll see the other half of the answer: ballots counted out loud, by hand.</span>
+            </p>
+            <div class="maplinks">
+              <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E4%BF%A1%E7%BE%A9%E5%8D%80%E4%BB%81%E6%84%9B%E8%B7%AF%E5%9B%9B%E6%AE%B5505%E8%99%9F">
+                <span class="t-zh">📍 開啟地圖</span><span class="t-en">📍 Open in Maps</span>
+              </a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </li>
+
+    <li class="stop" data-start="1325" data-end="1365">
+      <div class="rail"><span class="dot dot--filled">5</span></div>
+      <div class="card">
+        <span class="time">
+          <span class="t-zh">22:05–22:45</span><span class="t-en">10:05–10:45 PM</span>
+          <span class="badge now-badge" hidden><span class="t-zh">現在</span><span class="t-en">NOW</span></span>
+        </span>
+        <h3 class="title">
+          <span class="t-zh">宵夜時光</span><span class="t-en">Late-Night Supper</span>
+        </h3>
+        <p class="oneliner">
+          <span class="t-zh">延吉街／光復南路240巷，邊吃邊聊，避開散場人龍</span>
+          <span class="t-en">Yanji St. / Guangfu S. Rd. Lane 240 — food, talk, and no MRT crowd</span>
+        </p>
+        <div class="question">
+          <span class="t-zh">💭 想一想：51%的人，可以合法地碾壓49%的人嗎？當多數民意與少數人權相衝突時，民主該怎麼抓平衡？</span>
+          <span class="t-en">💭 Think about it: can 51% legally run over 49%? When the majority's will clashes with a minority's rights, how should a democracy strike the balance?</span>
+          <span class="source">托克維爾，「多數暴政」 · Tocqueville, "Tyranny of the Majority"</span>
+        </div>
+        <details>
+          <summary><span class="t-zh">更多資訊</span><span class="t-en">More info</span></summary>
+          <div class="detail-body">
+            <p>
+              <span class="t-zh">政治立場不合會拆散家庭？在台灣的離婚原因排行榜上，它甚至擠不進前十名。一家人藍綠白分投，照樣一起吃牛肉麵。</span>
+              <span class="t-en">Does political disagreement break up families? It doesn't even crack Taiwan's top-ten divorce causes. Families vote every which way — then go get beef noodles together.</span>
+            </p>
+            <div class="maplinks">
+              <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E4%BF%A1%E7%BE%A9%E5%8D%80%E5%85%89%E5%BE%A9%E5%8D%97%E8%B7%AF240%E5%B7%B7">
+                <span class="t-zh">📍 開啟地圖</span><span class="t-en">📍 Open in Maps</span>
+              </a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </li>
+
+    <li class="stop" data-start="1365" data-end="1410">
+      <div class="rail"><span class="dot">6</span></div>
+      <div class="card">
+        <span class="time">
+          <span class="t-zh">22:45 起</span><span class="t-en">10:45 PM onward</span>
+          <span class="badge now-badge" hidden><span class="t-zh">現在</span><span class="t-en">NOW</span></span>
+        </span>
+        <h3 class="title">
+          <span class="t-zh">賦歸</span><span class="t-en">Heading Back</span>
+        </h3>
+        <p class="oneliner">
+          <span class="t-zh">國父紀念館站2號出口，離宵夜地點最近的捷運出口</span>
+          <span class="t-en">NSYS Memorial Hall Stn Exit 2 — the closest MRT exit to where you ate</span>
+        </p>
+        <details>
+          <summary><span class="t-zh">更多資訊</span><span class="t-en">More info</span></summary>
+          <div class="detail-body">
+            <p>
+              <span class="t-zh">緊鄰光復南路260巷，距今晚的宵夜地點僅數十公尺。</span>
+              <span class="t-en">Right by Guangfu S. Rd. Lane 260, just steps from tonight's supper spot.</span>
+            </p>
+            <div class="maplinks">
+              <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%AE%89%E5%8D%80%E5%BF%A0%E5%AD%9D%E6%9D%B1%E8%B7%AF%E5%9B%9B%E6%AE%B5304%E8%99%9F">
+                <span class="t-zh">📍 開啟地圖</span><span class="t-en">📍 Open in Maps</span>
+              </a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </li>
+
+  </ol>
+
+  <section class="street-section">
+    <h2><span class="t-zh">街頭選戰實況</span><span class="t-en">Street Campaign Scenes</span></h2>
+    <p class="street-note">
+      <span class="t-zh">選戰最後幾天街頭常見的畫面，不是特定某一晚的行程紀錄。</span>
+      <span class="t-en">Everyday scenes from the campaign's final days — not tied to any single night's itinerary.</span>
+    </p>
+    <div class="street-grid">
+      <div class="street-item">
+        <div class="photo-frame"><img src="street-1.jpg" alt="A campaign sound truck with candidate banners passing by on a rainy street"></div>
+        <p class="photo-caption">
+          <span class="t-zh">文宣車經過</span><span class="t-en">Campaign Truck Passing By</span>
+        </p>
+      </div>
+      <div class="street-item">
+        <div class="photo-frame"><img src="street-2.jpg" alt="Campaign vehicles waiting at a rainy intersection"></div>
+        <p class="photo-caption">
+          <span class="t-zh">十字路口車隊</span><span class="t-en">Convoy at the Crossroads</span>
+        </p>
+      </div>
+      <div class="street-item">
+        <div class="photo-frame"><img src="street-3.jpg" alt="Campaign staff standing on a truck bed waving to the street"></div>
+        <p class="photo-caption">
+          <span class="t-zh">向市民揮手</span><span class="t-en">Waving to the Crowd</span>
+        </p>
+      </div>
+      <div class="street-item">
+        <div class="photo-frame"><img src="street-4.jpg" alt="A neighborhood campaign field office storefront"></div>
+        <p class="photo-caption">
+          <span class="t-zh">競選服務處</span><span class="t-en">Campaign Field Office</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="photos">
+    <h2><span class="t-zh">行程照片</span><span class="t-en">Tour Photos</span></h2>
+    <p>
+      <span class="t-zh">行程結束後，這裡會放上現場照片與完整說明——先賣個關子。</span>
+      <span class="t-en">Photos and the full story will appear here after the tour. Stay curious.</span>
+    </p>
+    <div class="photo-grid">
+      <div class="photo-slot">📷</div>
+      <div class="photo-slot">📷</div>
+      <div class="photo-slot">📷</div>
+      <div class="photo-slot">📷</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span class="t-zh">真程旅行社 Topology Travel · 2026 選前之夜</span>
+  <span class="t-en">Topology Travel · Election Eve 2026</span>
+</footer>
+
+<script>
+(function(){
+  var body = document.body;
+  var buttons = document.querySelectorAll('[data-lang-btn]');
+
+  function setLang(lang){
+    body.setAttribute('data-lang', lang);
+    buttons.forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang-btn') === lang ? 'true' : 'false');
+    });
+    try { localStorage.setItem('eev-lang', lang); } catch(e) {}
+  }
+
+  var initial = 'zh';
+  try {
+    var saved = localStorage.getItem('eev-lang');
+    if (saved === 'zh' || saved === 'en') {
+      initial = saved;
+    } else if (navigator.language && navigator.language.toLowerCase().indexOf('zh') !== 0) {
+      initial = 'en';
+    }
+  } catch(e) {}
+  setLang(initial);
+
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang-btn')); });
+  });
+
+  function updateNow(){
+    var now = new Date();
+    var mins = now.getHours() * 60 + now.getMinutes();
+    var stops = document.querySelectorAll('.stop');
+    var matched = false;
+    stops.forEach(function(stop){
+      var start = parseInt(stop.getAttribute('data-start'), 10);
+      var end = parseInt(stop.getAttribute('data-end'), 10);
+      var badge = stop.querySelector('.now-badge');
+      var isNow = mins >= start && mins < end;
+      stop.classList.toggle('is-now', isNow);
+      if (badge) badge.hidden = !isNow;
+      if (isNow) matched = true;
+    });
+  }
+  updateNow();
+  setInterval(updateNow, 30000);
+})();
+</script>
